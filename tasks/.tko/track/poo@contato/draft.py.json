@@ -1,0 +1,29 @@
+{
+    "patches": [
+        {
+            "label": "2025-11-26_13-17-43",
+            "content": "@@ -1,19 +1,15 @@\n class \n-Telef\n+F\n one:%0A   \n@@ -337,24 +337,26 @@\n        self.\n+__\n name = name%0A\n@@ -364,24 +364,26 @@\n        self.\n+__\n fone: list%5BT\n@@ -385,605 +385,16 @@\n ist%5B\n-Telefone%5D%0A%0A    def getName(self):%0A        return self.name%0A    %0A    def getFone(self):%0A        return self.fone%0A    %0A    def setName(self, name: str):%0A        name = self.name%0A%0A    def __str__(self):%0A        fone =%22, %22.join(%5Bstr(x)for x in self.fone%5D)%0A%0Adef main():%0A    contact = Contato(%22%22)%0A    while True:%0A        line = input()%0A        print(%22$%22 + line)%0A        args: list%5Bstr%5D = line.split()%0A%0A        if args%5B0%5D == %22end%22:%0A            break%0A        if args%5B0%5D == %22show%22:%0A            print(contact)%0A        if args%5B0%5D == %22init%22:%0A            name = args%5B1%5D%0A            contact.setName(name)%0Amain()\n+Fone%5D%0A%0A%0A\n %0A%0A%0A%0A\n",
+            "lines": "26"
+        },
+        {
+            "label": "2025-11-26_13-31-22",
+            "content": "@@ -536,36 +536,36 @@\n r):%0A        \n-self.\n name = \n+self.\n name%0A%0A    de\n@@ -595,17 +595,16 @@\n   fone =\n- \n %22, %22.joi\n",
+            "lines": "51"
+        },
+        {
+            "label": "2025-11-26_13-35-40",
+            "content": "@@ -394,44 +394,8 @@\n one%5D\n- = %5B%5D%0A        self.fav: bool = False\n %0A%0A  \n@@ -638,142 +638,8 @@\n e%5D)%0A\n-        if self.fav is True:%0A            return f%22@ %7Bself.name%7D %5B%7Bfone%7D%5D%22%0A        else:%0A            return f%22- %7Bself.name%7D %5B%7Bfone%7D%5D%22%0A%0A\n %0Adef\n",
+            "lines": "51"
+        },
+        {
+            "label": "2025-11-26_13-44-14",
+            "content": "@@ -281,204 +281,12 @@\n r%7D%22%0A\n-%0A\n     \n-def isvalido(self) -%3E bool:%0A        if not self.id or not self.number:%0A            return False%0A        if any(c.isalpha() for c in self.number):%0A            return False%0A        return True%0A\n %0Acla\n@@ -807,221 +807,8 @@\n %7D%5D%22%0A\n-        %0A    def adfone(self, id: str, number: str):%0A        fone = Telefone(id, number)%0A        if not fone.isvalido():%0A            print(%22fail: number invalid%22)%0A            return%0A        self.fone.append(fone)%0A\n %0A%0Ade\n@@ -1101,32 +1101,32 @@\n  name = args%5B1%5D%0A\n+\n             cont\n@@ -1147,130 +1147,8 @@\n me)%0A\n-        if args%5B0%5D == %22add%22:%0A            id = args%5B1%5D%0A            number = args%5B2%5D%0A            contact.adfone(id, number)%0A\n main\n",
+            "lines": "57"
+        },
+        {
+            "label": "2025-11-26_13-57-01",
+            "content": "class Telefone:\n    def __init__(self, id: str, number: str):\n        self.id = id\n        self.number = number\n\n    def getId(self):\n        return self.id\n    \n    def getNumber(self):\n        return self.number\n    \n    def __str__(self):\n        return f\"{self.id}:{self.number}\"\n\n    def isvalido(self) -> bool:\n        if not self.id or not self.number:\n            return False\n        if any(c.isalpha() for c in self.number):\n            return False\n        return True\n\nclass Contato:\n    def __init__(self, name: str):\n        self.name = name\n        self.fone: list[Telefone] = []\n        self.fav: bool = False\n\n    def getName(self):\n        return self.name\n    \n    def getFone(self):\n        return self.fone\n    \n    def setName(self, name: str):\n        self.name = name\n\n    def __str__(self):\n        fone = \", \".join([str(x)for x in self.fone])\n        if self.fav is True:\n            return f\"@ {self.name} [{fone}]\"\n        else:\n            return f\"- {self.name} [{fone}]\"\n        \n    def adfone(self, id: str, number: str):\n        fone = Telefone(id, number)\n        if not fone.isvalido():\n            print(\"fail: number invalid\")\n            return\n        self.fone.append(fone)\n\n\ndef main():\n    contact = Contato(\"\")\n    while True:\n        line = input()\n        print(\"$\" + line)\n        args: list[str] = line.split()\n\n        if args[0] == \"end\":\n            break\n        if args[0] == \"show\":\n            print(contact)\n        if args[0] == \"init\":\n            name = args[1]\n            contact.setName(name)\n        if args[0] == \"add\":\n            id = args[1]\n            number = args[2]\n            contact.adfone(id, number)\nmain()\n\n\n\n\n\n",
+            "lines": "75"
+        }
+    ]
+}
