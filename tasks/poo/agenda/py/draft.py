@@ -63,10 +63,41 @@ class Contato:
             return True
         else:
             return False
+        
+class Agenda:
+    def __init__(self):
+        self.__contatos: list[Contato] = []
+
+    def __str__(self):
+        order = sorted(self.__contatos, key=lambda c: c.getName().lower())
+        return "\n".join(str(contato) for contato in order)
+
+    def getcontatos(self)  -> list[Contato | None]:
+        return self.__contatos
+    
+    def acharnome(self, name: str):
+        name = name.lower()
+        for i in range(len(self.__contatos)):
+            if self.__contatos[i].getName().lower() == name:
+                return i
+        return -1
+    
+    def getcontato(self, name: str):
+        pos = self.acharnome(name)
+        if pos == 1:
+            return None
+        return self.__contatos[pos]
+    
+    def addcontato(self, name: str):
+        if self.acharnome(name) != -1:
+            print("fail: contato ja existe")
+            return
+        self.__contatos.append(Contato(name))
+    
 
 
 def main():
-    contact = Contato("")
+    agenda = Agenda("")
     while True:
         line = input()
         print("$" + line)
@@ -75,22 +106,16 @@ def main():
         if args[0] == "end":
             break
         elif args[0] == "show":
-            print(contact)
+            print(agenda)
         elif args[0] == "init":
             name = args[1]
-            contact.setName(name)
+            agenda.setName(name)
         elif args[0] == "add":
-            id = args[1]
-            number = args[2]
-            contact.adfone(id, number)
+            name = args[1]
+            contato = agd
         elif args[0] == "rm":
             index = int(args[1])
             contact.removerfone(index)
-        if args[0] == "tfav":
+        elif args[0] == "tfav":
             contact.colocarfavorito()
 main()
-
-
-
-
-

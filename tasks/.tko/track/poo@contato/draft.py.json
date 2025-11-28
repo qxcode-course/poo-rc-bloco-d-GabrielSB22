@@ -22,8 +22,33 @@
         },
         {
             "label": "2025-11-26_13-57-01",
-            "content": "class Telefone:\n    def __init__(self, id: str, number: str):\n        self.id = id\n        self.number = number\n\n    def getId(self):\n        return self.id\n    \n    def getNumber(self):\n        return self.number\n    \n    def __str__(self):\n        return f\"{self.id}:{self.number}\"\n\n    def isvalido(self) -> bool:\n        if not self.id or not self.number:\n            return False\n        if any(c.isalpha() for c in self.number):\n            return False\n        return True\n\nclass Contato:\n    def __init__(self, name: str):\n        self.name = name\n        self.fone: list[Telefone] = []\n        self.fav: bool = False\n\n    def getName(self):\n        return self.name\n    \n    def getFone(self):\n        return self.fone\n    \n    def setName(self, name: str):\n        self.name = name\n\n    def __str__(self):\n        fone = \", \".join([str(x)for x in self.fone])\n        if self.fav is True:\n            return f\"@ {self.name} [{fone}]\"\n        else:\n            return f\"- {self.name} [{fone}]\"\n        \n    def adfone(self, id: str, number: str):\n        fone = Telefone(id, number)\n        if not fone.isvalido():\n            print(\"fail: number invalid\")\n            return\n        self.fone.append(fone)\n\n\ndef main():\n    contact = Contato(\"\")\n    while True:\n        line = input()\n        print(\"$\" + line)\n        args: list[str] = line.split()\n\n        if args[0] == \"end\":\n            break\n        if args[0] == \"show\":\n            print(contact)\n        if args[0] == \"init\":\n            name = args[1]\n            contact.setName(name)\n        if args[0] == \"add\":\n            id = args[1]\n            number = args[2]\n            contact.adfone(id, number)\nmain()\n\n\n\n\n\n",
+            "content": "@@ -1213,77 +1213,8 @@\n e)%0A%0A\n-    def removerfone(self, index: int):%0A        self.fone.pop(index)%0A%0A\n %0Adef\n@@ -1674,112 +1674,8 @@\n er)%0A\n-        if args%5B0%5D == %22rm%22:%0A            index = args%5B0%5D%0A            contact.removerfone(index)%0A        %0A\n main\n",
             "lines": "75"
+        },
+        {
+            "label": "2025-11-27_13-24-38",
+            "content": "@@ -1791,20 +1791,15 @@\n x = \n-int(\n args%5B\n-1%5D)\n+0%5D\n %0A   \n",
+            "lines": "82"
+        },
+        {
+            "label": "2025-11-27_13-26-15",
+            "content": "@@ -1144,16 +1144,23 @@\n ail:\n+ number\n  invalid\n  num\n@@ -1155,21 +1155,16 @@\n  invalid\n- numb\n %22)%0A     \n",
+            "lines": "82"
+        },
+        {
+            "label": "2025-11-27_13-27-17",
+            "content": "@@ -1153,18 +1153,16 @@\n lid numb\n-er\n %22)%0A     \n",
+            "lines": "82"
+        },
+        {
+            "label": "2025-11-27_13-27-50",
+            "content": "@@ -1282,289 +1282,8 @@\n x)%0A%0A\n-    def colocarfavorito(self):%0A        if self.fav == False:%0A            self.fav = True%0A            return%0A        else:%0A            self.fav = False%0A%0A    def tafavoritado(self) -%3E bool:%0A        if self.fav == True:%0A            return True%0A        else:%0A            return False%0A%0A\n %0Adef\n@@ -1469,34 +1469,32 @@\n   break%0A        \n-el\n if args%5B0%5D == %22s\n@@ -1526,34 +1526,32 @@\n ontact)%0A        \n-el\n if args%5B0%5D == %22i\n@@ -1617,34 +1617,32 @@\n e(name)%0A        \n-el\n if args%5B0%5D == %22a\n@@ -1747,18 +1747,16 @@\n         \n-el\n if args%5B\n@@ -1851,67 +1851,8 @@\n     \n-if args%5B0%5D == %22tfav%22:%0A            contact.colocarfavorito()\n %0Amai\n",
+            "lines": "82"
+        },
+        {
+            "label": "2025-11-27_13-37-06",
+            "content": "class Telefone:\n    def __init__(self, id: str, number: str):\n        self.id = id\n        self.number = number\n\n    def getId(self):\n        return self.id\n    \n    def getNumber(self):\n        return self.number\n    \n    def __str__(self):\n        return f\"{self.id}:{self.number}\"\n\n    def isvalido(self) -> bool:\n        if not self.id or not self.number:\n            return False\n        if any(c.isalpha() for c in self.number):\n            return False\n        return True\n\nclass Contato:\n    def __init__(self, name: str):\n        self.name = name\n        self.fone: list[Telefone] = []\n        self.fav: bool = False\n\n    def getName(self):\n        return self.name\n    \n    def getFone(self):\n        return self.fone\n    \n    def setName(self, name: str):\n        self.name = name\n\n    def __str__(self):\n        fone = \", \".join([str(x)for x in self.fone])\n        if self.fav is True:\n            return f\"@ {self.name} [{fone}]\"\n        else:\n            return f\"- {self.name} [{fone}]\"\n        \n    def adfone(self, id: str, number: str):\n        fone = Telefone(id, number)\n        if not fone.isvalido():\n            print(\"fail: invalid number\")\n            return\n        self.fone.append(fone)\n\n    def removerfone(self, index: int):\n        self.fone.pop(index)\n\n    def colocarfavorito(self):\n        if self.fav == False:\n            self.fav = True\n            return\n        else:\n            self.fav = False\n\n    def tafavoritado(self) -> bool:\n        if self.fav == True:\n            return True\n        else:\n            return False\n\n\ndef main():\n    contact = Contato(\"\")\n    while True:\n        line = input()\n        print(\"$\" + line)\n        args: list[str] = line.split()\n\n        if args[0] == \"end\":\n            break\n        elif args[0] == \"show\":\n            print(contact)\n        elif args[0] == \"init\":\n            name = args[1]\n            contact.setName(name)\n        elif args[0] == \"add\":\n            id = args[1]\n            number = args[2]\n            contact.adfone(id, number)\n        elif args[0] == \"rm\":\n            index = int(args[1])\n            contact.removerfone(index)\n        if args[0] == \"tfav\":\n            contact.colocarfavorito()\nmain()\n\n\n\n\n\n",
+            "lines": "96"
         }
     ]
 }
